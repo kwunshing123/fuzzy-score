@@ -6,7 +6,7 @@
  */
 export default (term: string, query: string): number => {
   // Checking
-  if(typeof term != 'string' || typeof query != 'string') {
+  if(typeof term !== 'string' || typeof query !== 'string') {
     throw new Error("term or query must be string.");
   }
 
@@ -26,11 +26,11 @@ export default (term: string, query: string): number => {
 
   let lastCharMatchIndex: number = -2;
 
-  for (let i = 0; i < query.length; i++) {
+  for (const queryChar of query) {
     let termCharMatch: boolean = false;
 
     for (; termIndex < term.length && !termCharMatch; termIndex++) {
-      if (query[i] === term[termIndex]) {
+      if (queryChar === term[termIndex]) {
         points++;
         // Last character matched
         if (lastCharMatchIndex + 1 === termIndex) {
